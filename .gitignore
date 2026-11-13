@@ -1,0 +1,70 @@
+# Ignore everything by default
+*
+
+# Allow source code
+!src/
+!src/**/
+!src/**/*.py
+
+# Allow Azure ML scripts
+!azure/
+!azure/**/
+!azure/**/*.py
+
+# Allow configuration files
+!configs/
+!configs/conda.yml
+!configs/*.yaml
+
+# Allow visualization scripts
+!scripts/
+!scripts/**/
+!scripts/**/*.py
+
+# Allow documentation
+!*.md
+!docs/
+!docs/results/
+!docs/results/five_store_final_summary.png
+!docs/results/store_300_top30_products.png
+
+# Allow dependencies
+!requirements.txt
+
+# Allow GitHub Actions workflows
+!.github/
+!.github/workflows/
+!.github/workflows/*.yml
+!.github/workflows/*.yaml
+
+# Keep the .gitignore itself
+!.gitignore
+
+# Ignore Python temporary files
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Ignore virtual environments
+.venv/
+venv/
+
+# Ignore raw datasets
+raw_data/
+
+# Ignore Azure downloaded artifacts
+evidence/
+
+# Ignore trained model files
+*.joblib
+*.pkl
+
+# Ignore generated intermediate outputs
+docs/results/*.csv
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

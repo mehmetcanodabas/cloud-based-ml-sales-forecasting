@@ -1,0 +1,51 @@
+name: Python CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate Python Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check Python syntax
+        run: |
+          python -m compileall -q src azure scripts
+
+      - name: Check required project files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          required = [
+              "README.md",
+              "requirements.txt",
+              "configs/conda.yml",
+              "scripts/plot_results.py",
+              "docs/results/five_store_final_summary.png",
+              "docs/results/store_300_top30_products.png",
+          ]
+
+          missing = [
+              path for path in required
+              if not Path(path).is_file()
+          ]
+
+          if missing:
+              raise SystemExit(
+                  "Missing required files: " + ", ".join(missing)
+              )
+
+          print("All required project files found.")
+          PY

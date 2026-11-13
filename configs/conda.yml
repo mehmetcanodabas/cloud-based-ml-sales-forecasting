@@ -1,0 +1,17 @@
+name: cloud-sales-forecasting
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - pip=24.3.1
+  - pip:
+      - numpy==1.26.4
+      - pandas==2.2.3
+      - pyarrow==19.0.1
+      - lightgbm==4.6.0
+      - scikit-learn==1.6.1
+      - joblib==1.4.2
+      - mlflow==2.22.0
+      - azureml-mlflow==1.60.0
